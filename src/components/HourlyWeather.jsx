@@ -11,7 +11,6 @@ const HourlyForecast = () => {
     async function fetchHourlyWeather() {
       try {
         setLoading(true);
-        // Using London coordinates: 51.5074, -0.1278
         const response = await fetch(
           `https://api.open-meteo.com/v1/forecast?latitude=-17.875&longitude=30.875&hourly=temperature_2m,precipitation_probability,wind_speed_10m,weather_code&timezone=Europe%2FLondon&forecast_days=1`
         );
@@ -22,7 +21,6 @@ const HourlyForecast = () => {
         
         const data = await response.json();
         
-        // Get current hour and next 8 hours
         const currentHour = new Date().getHours();
         const hourlySlice = data.hourly.time.slice(currentHour, currentHour + 9);
         
@@ -31,7 +29,6 @@ const HourlyForecast = () => {
           const hour = date.getHours();
           const actualIndex = currentHour + index;
           
-          // Format time display
           let timeDisplay;
           if (index === 0) {
             timeDisplay = 'Now';
@@ -66,20 +63,19 @@ const HourlyForecast = () => {
     fetchHourlyWeather();
   }, []);
 
-  // Function to determine how many data points should be visible based on screen size
   useEffect(() => {
     const updateVisibleDataPoints = () => {
       const width = window.innerWidth;
       if (width < 480) {
-        setVisibleDataPoints(4); // Very small screens
+        setVisibleDataPoints(4);
       } else if (width < 640) {
-        setVisibleDataPoints(4); // Small screens
+        setVisibleDataPoints(4); 
       } else if (width < 768) {
-        setVisibleDataPoints(5); // Medium-small screens
+        setVisibleDataPoints(5); 
       } else if (width < 1024) {
-        setVisibleDataPoints(6); // Medium screens
+        setVisibleDataPoints(6);
       } else {
-        setVisibleDataPoints(8); // Large screens
+        setVisibleDataPoints(8); 
       }
     };
 
@@ -128,7 +124,6 @@ const HourlyForecast = () => {
     return [minTemp - padding, maxTemp + padding];
   };
 
-  // Get the data that should be displayed based on screen size
   const displayData = hourlyData.slice(0, visibleDataPoints);
 
   if (loading) {

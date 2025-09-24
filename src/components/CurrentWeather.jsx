@@ -12,7 +12,6 @@ const CurrentWeather = () => {
     async function fetchCurrentWeather() {
       try {
         setLoading(true);
-        // Using London coordinates: 51.5074, -0.1278
         const response = await fetch(
           `https://api.open-meteo.com/v1/forecast?latitude=-17.875&longitude=30.875&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,surface_pressure,wind_speed_10m,wind_direction_10m,visibility&timezone=Europe%2FLondon`
         );
@@ -107,8 +106,7 @@ const CurrentWeather = () => {
   }
 
   return (
-    <div className="bg-gradient-to-b from-gray-100 to-gray-400 rounded-lg shadow-sm overflow-hidden">      
-      {/* Current weather info */}
+    <div className="bg-gradient-to-b from-gray-100 to-gray-400 rounded-lg shadow-sm overflow-hidden">
       <div className="p-6">
         <div className="text-orange-600">{formatDateTime()}</div>
         <div className="text-5xl font-bold text-gray-800 mt-4">Harare, ZW</div>

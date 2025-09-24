@@ -80,7 +80,7 @@ const DailyWeather = () => {
   }
 
   return (
-    <div className="bg-gradient-to-r from-gray-400 to-gray-100 rounded-lg shadow-sm p-6 mt-4">
+    <div className="bg-gradient-to-r from-gray-400 to-gray-100 rounded-lg shadow-sm p-6 h-full">
       <h2 className="text-xl font-semibold mb-4 text-gray-900">
         7-day forecast
       </h2>
